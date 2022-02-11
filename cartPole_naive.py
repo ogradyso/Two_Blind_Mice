@@ -61,6 +61,20 @@ def basic_policy(obs):
     angle = obs[2]
     return 0 if angle < 0 else 1
 
+def angle_velo_policy(obs):
+    angle = obs[2]
+    abs_velocity = abs(obs[3])
+    if angle < 0:
+        if (abs_velocity > 0.1):
+            return 0
+        else:
+            return 1
+    else:
+        if (abs_velocity < 0.1):
+            return 1
+        else:
+            return 0
+
 totals = []
 for episode in range(500):
     episode_rewards = 0
