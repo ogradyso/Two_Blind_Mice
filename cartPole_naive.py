@@ -61,21 +61,24 @@ def basic_policy(obs):
     angle = obs[2]
     return 0 if angle < 0 else 1
 
+# I tinkered arround with the abs_velocity value of the following
+#policy function. I performs better than the basic policy but
+#still pretty bad.
 def angle_velo_policy(obs):
     angle = obs[2]
     abs_velocity = abs(obs[3])
     if angle < 0:
-        if (abs_velocity > 0.1):
+        if (abs_velocity > 0.18):
             return 0
         else:
             return 1
     else:
-        if (abs_velocity < 0.1):
+        if (abs_velocity < 0.18):
             return 1
         else:
             return 0
-
-totals = []
+        
+basic_totals = []
 for episode in range(500):
     episode_rewards = 0
     obs = env.reset()
@@ -87,7 +90,17 @@ for episode in range(500):
             break
     totals.append(episode_rewards)
         
-        
+angle_velo_totals = []
+for episode in range(500):
+    episode_rewards = 0
+    obs = env.reset()
+    for step in range(200):
+        action = angle_velo_policy(obs)
+        obs, reward, done, info = env.step(action)
+        episode_rewards += reward
+        if done:
+            break
+    angle_velo_totals.append(episode_rewards)
         
         
         

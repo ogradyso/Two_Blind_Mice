@@ -3,7 +3,8 @@
 This project is a collaborative exploration of reinforcement learning algorithms for spatial navigation.
 
 # Prerequisites:
-In order to run some of the programs in this repo, users will have to install Open AI Gym to optimize model training. It is also recommended that users install an updated version of Anaconda.
+In order to run some of the programs in this repo, users will have to install [Open AI Gym](https://gym.openai.com/) to optimize model training. It is also recommended that users install an updated version of Anaconda.
+
 
 # Project plan:
 
